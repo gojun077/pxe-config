@@ -12,5 +12,7 @@
 *.e64
 *.png
 memdisk
+# Sub-directories to ignore
 images/
 efi32/
+kickstart-pxe/
