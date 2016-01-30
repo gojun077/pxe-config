@@ -12,3 +12,5 @@
 *.e64
 *.png
 memdisk
+images/
+efi32/
