@@ -1,0 +1,14 @@
+# Files in tftp-root directory for PXE server
+# that should be ignored (mostly binary files)
+*.com
+*.bin
+*.swp
+*.img
+*.c32
+*.gz
+*.exe
+*.efi
+*.0
+*.e64
+*.png
+memdisk
