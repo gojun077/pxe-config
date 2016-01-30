@@ -1,0 +1,14 @@
+DEFAULT menu.c32
+PROMPT 0
+MENU TITLE PXE Boot Menu for Legacy BIOS
+
+LABEL arch64_http
+  TEXT HELP
+  Boot the Arch Linux (x86_64) live medium (Using HTTP).
+  It allows you to install Arch Linux or perform system maintenance.
+  ENDTEXT
+  MENU LABEL Boot Arch Linux (x86_64) (HTTP)
+  LINUX images/arch_x64/vmlinuz-archlinux-x64
+  INITRD images/arch_x64/intel_ucode.img,images/arch_x64/archiso.img
+  APPEND archisobasedir=arch archiso_http_srv=http://192.168.95.97:8080/
+  SYSAPPEND 3
