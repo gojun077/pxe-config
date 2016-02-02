@@ -12,6 +12,8 @@ be found in my *gojun077/jun-dotfiles* repo on github.
 - I have defined my *tftp-root* path to be:
   `/usr/local/tftpboot/pxelinux`
 - I use CentOS 7's `bootx64.efi` and `grubx64.efi` so
-  this repo includes the following paths for `grub.cfg`:
+  this repo includes the following paths:
   + *tftp-root*/`grub.cfg`
   + BACKUP LOCATION for grub config: *tftp-root*`/EFI/BOOT/grub.cfg`
+  + *tftp-root*`/uefi/bootx64.efi` (specified in `dnsmasq.conf`)
+  + *tftp-root*`/grubx64.efi`
