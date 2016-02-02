@@ -12,3 +12,12 @@ LABEL arch64_http
   INITRD images/arch_x64/intel_ucode.img,images/arch_x64/archiso.img
   APPEND archisobasedir=arch archiso_http_srv=http://192.168.95.97:8080/
   SYSAPPEND 3
+
+LABEL ubuntu_1510
+  MENU LABEL Boot Ubuntu 15.10 (HTTP)
+  KERNEL images/xubuntu15-10_x64/vmlinuz-xubuntu1510.efi
+  INITRD images/xubuntu15-10_x64/initrd-xubuntu1510.lz
+#  APPEND ...
+# TO DO:
+# - add installation options to ubuntu PXE (http? vnc?)
+# - add Fedora 23 to Legacy PXE install menu
