@@ -46,7 +46,6 @@ volgroup cinder-volumes --pesize=4096 pv.769 pv.770
 
 %packages
 @^server-product-environment
-vim-enhanced
 
 %end
 
