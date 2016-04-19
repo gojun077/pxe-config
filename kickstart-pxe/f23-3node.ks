@@ -24,7 +24,7 @@ timezone Asia/Seoul --isUtc
 selinux --permissive
 user --groups=wheel --name=fedjun --password=$6$/PNIJOls2G8gzEZt$swngpGaZp9bt2AFXlunOnZvuVhUA93wqTJOQKLX7eY1kuuZvyLFYpLDEDA.o.g7KpYMsFYHx2.N/bdwiBxsqn. --iscrypted --gecos="fedjun"
 # System bootloader configuration
-bootloader --location=gpt --boot-drive=sda
+bootloader --location=mbr --boot-drive=sda
 # Partition clearing information
 clearpart --all --initlabel --drives=sda,sdb
 # Disk partitioning information
