@@ -15,8 +15,8 @@ lang en_US.UTF-8
 
 # Network information
 network  --bootproto=dhcp --device=enp3s0 --ipv6=auto --activate
-network  --bootproto=static --device=enp4s0 --ipv6=auto --activate
-#network  --hostname=fx8350no3
+network  --bootproto=dhcp --device=enp4s0 --ipv6=auto --activate
+network  --hostname=fx8350no
 # Root password
 rootpw --iscrypted $6$92s6YmzzFHcqVq1C$mRJ9Hl40.szgrcu1VG1wDKHF8sjBLcnfvhadXI2cM6HZRYNY7corhE3mDnddrWLjIJbKhGbxYzORjHH4FywBC0
 # System timezone
