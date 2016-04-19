@@ -27,6 +27,7 @@ user --groups=wheel --name=fedjun --password=$6$/PNIJOls2G8gzEZt$swngpGaZp9bt2AF
 bootloader --location=mbr --boot-drive=sda
 # Partition clearing information
 clearpart --all --initlabel --drives=sda,sdb
+zerombr
 # Disk partitioning information
 part /boot --fstype="ext4" --ondisk=sda --size=512 --label=f23boot
 part pv.768 --fstype="lvmpv" --ondisk=sda --size=602120
