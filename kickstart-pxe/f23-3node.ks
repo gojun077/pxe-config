@@ -37,7 +37,7 @@ logvol swap  --fstype="swap" --size=8192 --name=swap --vgname=fedora_fx8350no3
 logvol /  --fstype="xfs" --size=30720 --name=root --vgname=fedora_fx8350no3
 
 # Create LVM Physical Volume in the remaining space on /dev/sda
-part pv.769 --fstype="lvmpv" --ondisk=sda --size=1 grow
+part pv.769 --fstype="lvmpv" --ondisk=sda --size=1 --grow
 # Create 480GB LVM PV on /dev/sdb
 part pv.770 --fstype="lvmlpv" --ondisk=sdb --size=491520
 # Create VG "cinder-volumes" on pv.769 and pv.770
