@@ -22,5 +22,6 @@ LABEL fedora23
 LABEL xenial16.04
   MENU LABEL Boot Ubuntu 16.04 (HTTP)
   KERNEL images/xenial_x64/linux
-  APPEND initrd=images/xenial_x64/initrd.gz ip=dhcp vnc vncconnect=192.168.95.97:5500 method=http://192.168.95.97:8080
+  INITRD  images/xenial_x64/initrd.gz
+  APPEND ip=dhcp vnc vncconnect=192.168.95.97:5500 method=http://192.168.95.97:8080
 
