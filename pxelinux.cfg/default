@@ -19,14 +19,8 @@ LABEL fedora23
   INITRD images/fedora23_x64/initrd.img
   APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc inst.vncconnect=192.168.95.97:5500 ksdevice=link inst.ks=http://192.168.95.97:8090/f23-3node.ks
 
-LABEL xubuntu_1510
-  MENU LABEL Boot Ubuntu 15.10 (HTTP)
-  # can't find a regular vmlinuz image on the xubuntu iso- only '.efi'
-  KERNEL images/xubuntu15-10_x64/vmlinuz-xubuntu1510.efi
-  # can't find a regular initrd.img file- just '.lz'
-  INITRD images/xubuntu15-10_x64/initrd-xubuntu1510.lz
-#  APPEND ...
+LABEL xenial16.04
+  MENU LABEL Boot Ubuntu 16.04 (HTTP)
+  KERNEL images/xenial_x64/linux
+  APPEND initrd=images/xenial_x64/initrd.gz ip=dhcp vnc vncconnect=192.168.95.97:5500 method=http://192.168.95.97:8080
 
-# TO DO:
-# - add installation options to ubuntu PXE (http? vnc?)
-# - add Fedora 23 to Legacy PXE install menu
