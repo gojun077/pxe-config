@@ -19,9 +19,14 @@ LABEL fedora23
   INITRD images/fedora23_x64/initrd.img
   APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc inst.vncconnect=192.168.95.97:5500 ksdevice=link inst.ks=http://192.168.95.97:8090/f23-3node.ks
 
-LABEL xenial16.04
-  MENU LABEL Boot Ubuntu 16.04 (HTTP)
+LABEL xenial16.04_netinst
+  MENU LABEL Boot Ubuntu 16.04 (netinst)
   KERNEL images/xenial_x64/linux
   INITRD  images/xenial_x64/initrd.gz
   APPEND ip=dhcp
 
+LABEL xenial16.04_dvd
+  MENU LABEL Boot Ubuntu 16.03 DVD
+  KERNEL images/xenialDVD/linux
+  INITRD images/xenialDVD/initrd.gz
+  APPEND ip=dhcp ks=http://192.168.95.97:8000/kickstart-ubuntu.cfg
