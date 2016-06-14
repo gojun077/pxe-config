@@ -26,7 +26,7 @@ LABEL xenial16.04_netinst
   APPEND ip=dhcp
 
 LABEL xenial16.04_dvd
-  MENU LABEL Boot Ubuntu 16.03 DVD
+  MENU LABEL Boot Ubuntu 16.04 DVD
   KERNEL images/xenialDVD/linux
   INITRD images/xenialDVD/initrd.gz
   APPEND ip=dhcp ks=http://192.168.95.97:8000/kickstart-ubuntu.cfg
