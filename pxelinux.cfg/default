@@ -25,6 +25,12 @@ LABEL xenial16.04_netinst
   INITRD  images/xenial_x64/initrd.gz
   APPEND ip=dhcp
 
+LABEL xenial16.04_netinst-Netconsole
+  MENU LABEL Boot Ubuntu 16.04 (netinst over Netconsole)
+  KERNEL images/xenial_x64/linux
+  INITRD  images/xenial_x64/initrd.gz
+  APPEND ip=dhcp preseed/url=http://192.168.95.97:8000/netconsole.cfg
+
 LABEL xenial16.04_dvd
   MENU LABEL Boot Ubuntu 16.04 DVD
   KERNEL images/xenialDVD/linux
