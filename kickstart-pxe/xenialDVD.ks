@@ -7,6 +7,10 @@
 # Note that in the example preseed you must replace 'd-i' with 'preseed'
 # for these cmd's to work in this kickstart
 
+install
+url --url http://192.168.95.97:8080/ubuntu/
+
+
 ##########################
 # Ubuntu Kickstart Syntax
 ##########################
