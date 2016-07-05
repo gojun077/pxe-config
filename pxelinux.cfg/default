@@ -41,4 +41,4 @@ LABEL xenial16.04_dvd_ps
   MENU LABEL Boot Ubuntu 16.04 DVD w/ D-I Preseed
   KERNEL images/xenialDVD/linux
   INITRD images/xenialDVD/initrd.gz
-  APPEND ip=dhcp auto=true priority=critical url=http://192.168.95.97:8000/xenial.ps
+  APPEND ip=dhcp auto=true priority=critical url=http://192.168.95.97:8000/xenialDVD.ps
