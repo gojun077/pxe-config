@@ -331,7 +331,7 @@ d-i partman/confirm_nooverwrite boolean true
 ### Apt setup
 # You can choose to install restricted and universe software, or to install
 # software from the backports repository.
-d-i apt-setup/restricted boolean false
+d-i apt-setup/restricted boolean true
 d-i apt-setup/universe boolean false
 d-i apt-setup/backports boolean false
 # Uncomment this if you don't want to use a network mirror.
@@ -344,7 +344,7 @@ d-i apt-setup/use_mirror boolean false
 
 # Additional repositories, local[0-9] available
 d-i apt-setup/local0/repository string \
-       http://192.168.95.97:8080/ubuntu xenial main
+       http://192.168.95.97:8080/ubuntu xenial main restricted
 d-i apt-setup/local0/comment string Xenial DVD install files
 # Enable deb-src lines
 d-i apt-setup/local0/source boolean false
