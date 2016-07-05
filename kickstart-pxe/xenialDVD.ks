@@ -25,9 +25,26 @@ preseed keyboard-configuration/xkb-keymap select us
 ### Network configuration
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
-preseed netcfg/choose_interface select auto
+#preseed netcfg/choose_interface select auto
 # To pick a particular interface instead:
-#preseed netcfg/choose_interface select eth1
+preseed netcfg/choose_interface select eth0
+
+# If you prefer to configure the network manually, uncomment this line and
+# the static network configuration below.
+preseed netcfg/disable_autoconfig boolean true
+
+# If you want the preconfiguration file to work on systems both with and
+# without a dhcp server, uncomment these lines and the static network
+# configuration below.
+preseed netcfg/dhcp_failed note
+preseed netcfg/dhcp_options select Configure network manually
+
+# Static network configuration.
+preseed netcfg/get_nameservers string 192.168.40.1
+$preseed netcfg/get_ipaddress string 10.10.10.10
+#d-i netcfg/get_netmask string 255.255.255.0
+#d-i netcfg/get_gateway string 192.168.1.1
+#d-i netcfg/confirm_static boolean true
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -35,7 +52,7 @@ preseed netcfg/choose_interface select auto
 
 # Use an option only available via preseed to tell
 # Ubuntu's installer not to make a non-root user during install
-preseed passwd/make-user boolean false
+preseed passwd/make-user boolean true
 
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
