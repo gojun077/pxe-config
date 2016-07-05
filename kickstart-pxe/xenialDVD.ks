@@ -7,14 +7,11 @@
 # Note that in the example preseed you must replace 'd-i' with 'preseed'
 # for these cmd's to work in this kickstart
 
-install
-url --url http://192.168.95.97:8080/ubuntu/
-
 
 ##########################
 # Ubuntu Kickstart Syntax
 ##########################
-preseed debian-installer/locale string en_US
+preseed debian-installer/locale string en_US.UTF-8
 preseed debian-installer/language string en
 preseed debian-installer/country string KR
 
@@ -40,7 +37,7 @@ preseed netcfg/choose_interface select auto
 #preseed netcfg/dhcp_options select Configure network manually
 
 # Static network configuration.
-preseed netcfg/get_nameservers string unassigned-nameserver
+preseed netcfg/get_nameservers string 127.0.0.1
 #preseed netcfg/get_ipaddress string 10.10.10.10
 #d-i netcfg/get_netmask string 255.255.255.0
 #d-i netcfg/get_gateway string 192.168.1.1
@@ -129,18 +126,24 @@ preseed debian-installer/allow_unauthenticated boolean true
 #preseed passwd/root-password-crypted password [crypt(3) hash]
 
 # To create a normal user account.
-preseed passwd/user-fullname string Ubuntu User
-preseed passwd/username string ubuntu
+# Note: the commands below do not seem to be working;
+# I will use Ubuntu Kickstart commands for this
+
+#preseed passwd/user-fullname string Growin Suser
+#preseed passwd/username string suser
 # Normal user's password, either in clear text
-preseed passwd/user-password password growin
-preseed passwd/user-password-again password growin
+#preseed passwd/user-password password 11growin11
+#preseed passwd/user-password-again password 11growin11
+
+user ubuntu --fullname "Ubuntu Growin" --password growin)(*&
+
 # or encrypted using a crypt(3) hash.
 #d-i passwd/user-password-crypted password [crypt(3) hash]
 # Create the first user with the specified UID instead of the default.
 #d-i passwd/user-uid string 1010
 # The installer will warn about weak passwords. If you are sure you know
 # what you're doing and want to override it, uncomment this.
-#d-i user-setup/allow-password-weak boolean true
+preseed user-setup/allow-password-weak boolean true
 
 # The user account will be added to some standard initial groups. To
 # override that, use this.
@@ -212,11 +215,15 @@ preseed finish-install/reboot_in_progress note
 # Normal Kickstart Syntax
 ##########################
 # Configure authentication
-#auth --useshadow --enablemd5
+auth --useshadow --enablemd5
 
 ### Partitioning
+# NOTE: As of 16.04, Ubuntu Kickstart does not support
+# partitioning multiple drives; only a single drive can
+# be partitioned
+
 # clearpart --initlabel --all
-# zerombr
+# zerombr yes
 # part /boot       --fstype ext4 --size=512      --ondisk=sda --asprimary
 # part swap                      --size=1024     --ondisk=sda --asprimary
 # part /           --fstype ext4 --size=8192     --ondisk=sda --asprimary
@@ -226,3 +233,6 @@ preseed finish-install/reboot_in_progress note
 # part /var        --fstype ext4 --size=18432    --ondisk=sda
 # part /var/crash  --fstype ext4 --size=6144     --ondisk=sda
 # part /home       --fstype ext4 --size=100      --ondisk=sda --grow
+
+# Do not configure X Windows
+skipx
