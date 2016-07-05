@@ -74,10 +74,45 @@ preseed netcfg/get_domain string unassigned-domain
 ### Mirror settings
 # If you select ftp, the mirror/country string does not need to be set.
 #preseed mirror/protocol string ftp
-preseed mirror/country string kr
-preseed mirror/http/hostname string archive.ubuntu.com
+#preseed mirror/country string kr
+#preseed mirror/http/hostname string archive.ubuntu.com
+#preseed mirror/http/directory string /ubuntu
+#preseed mirror/http/proxy string
+
+# local repo settings
+preseed mirror/country string manual
+preseed mirror/http/hostname string 192.168.95.97:8080
 preseed mirror/http/directory string /ubuntu
-preseed mirror/http/proxy string
+
+### Apt setup
+# You can choose to install restricted and universe software, or to install
+# software from the backports repository.
+preseed apt-setup/restricted boolean false
+preseed apt-setup/universe boolean false
+preseed apt-setup/backports boolean false
+# Uncomment this if you don't want to use a network mirror.
+preseed apt-setup/use_mirror boolean false
+# Select which update services to use; define the mirrors to be used.
+# Values shown below are the normal defaults.
+#d-i apt-setup/services-select multiselect security
+#d-i apt-setup/security_host string security.ubuntu.com
+#d-i apt-setup/security_path string /ubuntu
+
+# Additional repositories, local[0-9] available
+preseed apt-setup/local0/repository string \
+       http://192.168.95.97:8080/ubuntu xenial main
+preseed apt-setup/local0/comment string Xenial DVD files
+# Enable deb-src lines
+preseed apt-setup/local0/source boolean false
+# URL to the public key of the local repository; you must provide a key or
+# apt will complain about the unauthenticated repository and so the
+# sources.list line will be left commented out
+#d-i apt-setup/local0/key string http://local.server/key
+
+# By default the installer requires that repositories be authenticated
+# using a known gpg key. This setting can be used to disable that
+# authentication. Warning: Insecure, not recommended.
+preseed debian-installer/allow_unauthenticated boolean true
 
 ### Account setup
 # Skip creation of a root account (normal user account will be able to
@@ -98,7 +133,7 @@ preseed passwd/user-fullname string Ubuntu User
 preseed passwd/username string ubuntu
 # Normal user's password, either in clear text
 preseed passwd/user-password password growin
-#d-i passwd/user-password-again password insecure
+preseed passwd/user-password-again password growin
 # or encrypted using a crypt(3) hash.
 #d-i passwd/user-password-crypted password [crypt(3) hash]
 # Create the first user with the specified UID instead of the default.
@@ -137,38 +172,7 @@ preseed partman/default_filesystem string ext4
 preseed partman-partitioning/confirm_write_new_label boolean true
 preseed partman/choose_partition select finish
 preseed partman/confirm boolean true
-preseed partman/confirm_nooverwrite boolean true
-
-
-### Apt setup
-# You can choose to install restricted and universe software, or to install
-# software from the backports repository.
-#d-i apt-setup/restricted boolean true
-#d-i apt-setup/universe boolean true
-#d-i apt-setup/backports boolean true
-# Uncomment this if you don't want to use a network mirror.
-#d-i apt-setup/use_mirror boolean false
-# Select which update services to use; define the mirrors to be used.
-# Values shown below are the normal defaults.
-#d-i apt-setup/services-select multiselect security
-#d-i apt-setup/security_host string security.ubuntu.com
-#d-i apt-setup/security_path string /ubuntu
-
-# Additional repositories, local[0-9] available
-#d-i apt-setup/local0/repository string \
-#       http://local.server/ubuntu xenial main
-#d-i apt-setup/local0/comment string local server
-# Enable deb-src lines
-#d-i apt-setup/local0/source boolean true
-# URL to the public key of the local repository; you must provide a key or
-# apt will complain about the unauthenticated repository and so the
-# sources.list line will be left commented out
-#d-i apt-setup/local0/key string http://local.server/key
-
-# By default the installer requires that repositories be authenticated
-# using a known gpg key. This setting can be used to disable that
-# authentication. Warning: Insecure, not recommended.
-#d-i debian-installer/allow_unauthenticated boolean true
+preseed partman/confirm_nooverwrite boolean false
 
 ### Package selection
 #preseed tasksel/first multiselect ubuntu-desktop
