@@ -59,8 +59,8 @@ d-i netcfg/choose_interface select auto
 # IPv4 example
 #d-i netcfg/get_ipaddress string 192.168.1.42
 #d-i netcfg/get_netmask string 255.255.255.0
-#d-i netcfg/get_gateway string 192.168.1.1
-#d-i netcfg/get_nameservers string 192.168.1.1
+#d-i netcfg/get_gateway string none
+#d-i netcfg/get_nameservers string none
 #d-i netcfg/confirm_static boolean true
 #
 # IPv6 example
@@ -73,8 +73,8 @@ d-i netcfg/choose_interface select auto
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
 # from being shown, even if values come from dhcp.
-d-i netcfg/get_hostname string unassigned-hostname
-d-i netcfg/get_domain string unassigned-domain
+#d-i netcfg/get_hostname string unassigned-hostname
+#d-i netcfg/get_domain string unassigned-domain
 # Note: If you do a PXE install, hostname is set up before the preseed
 # is fetched, so in this case you will need to set the hostname and
 # domain on the kernel cmd line
@@ -332,7 +332,7 @@ d-i partman/confirm_nooverwrite boolean true
 ### Apt setup
 # You can choose to install restricted and universe software, or to install
 # software from the backports repository.
-d-i apt-setup/restricted boolean true
+d-i apt-setup/restricted boolean false
 d-i apt-setup/universe boolean false
 d-i apt-setup/backports boolean false
 # Uncomment this if you don't want to use a network mirror.
