@@ -75,6 +75,9 @@ d-i netcfg/choose_interface select auto
 # from being shown, even if values come from dhcp.
 d-i netcfg/get_hostname string unassigned-hostname
 d-i netcfg/get_domain string unassigned-domain
+# Note: If you do a PXE install, hostname is set up before the preseed
+# is fetched, so in this case you will need to set the hostname and
+# domain on the kernel cmd line
 
 # If you want to force a hostname, regardless of what either the DHCP
 # server returns or what the reverse DNS entry for the IP is, uncomment
