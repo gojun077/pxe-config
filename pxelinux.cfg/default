@@ -26,16 +26,10 @@ LABEL xenial16.04_netinst
   APPEND ip=dhcp
 
 LABEL xenial16.04_netinst-Netconsole
-  MENU LABEL Boot Ubuntu 16.04 (netinst over ssh)
+  MENU LABEL Boot Ubuntu 16.04 (manual netinst over ssh)
   KERNEL images/xenial_x64/linux
   INITRD  images/xenial_x64/initrd.gz
   APPEND ip=dhcp auto=true priority=critical locale=en_US.UTF-8 kdb-chooser/method=us netcfg/choose_interface=auto url=http://192.168.95.97:8000/netconsole.cfg
-
-LABEL xenial16.04_dvd_ks
-  MENU LABEL Boot Ubuntu 16.04 DVD w/Kickstart
-  KERNEL images/xenialDVD/linux
-  INITRD images/xenialDVD/initrd.gz
-  APPEND ip=dhcp ks=http://192.168.95.97:8000/xenialDVD.ks
 
 LABEL xenial16.04_dvd_ps
   MENU LABEL Boot Ubuntu 16.04 DVD w/ D-I Preseed
