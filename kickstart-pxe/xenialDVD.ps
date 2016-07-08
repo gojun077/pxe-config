@@ -455,7 +455,7 @@ d-i finish-install/reboot_in_progress note
 # reboot into the installed system.
 #d-i debian-installer/exit/halt boolean true
 # This will power off the machine instead of just halting it.
-#d-i debian-installer/exit/poweroff boolean true
+d-i debian-installer/exit/poweroff boolean true
 
 ### Preseeding other packages
 # Depending on what software you choose to install, or if things go wrong
