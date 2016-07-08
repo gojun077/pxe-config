@@ -489,3 +489,11 @@ d-i debian-installer/exit/poweroff boolean true
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
+
+### Add ssh public key to /home/ubuntu/.ssh/authorized_keys
+# Note that '-c' option for 'sh' reads commands from command_string
+# instead of from stdin
+d-i preseed/late_command string \
+    in-target /bin/sh -c "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7l11E8BQUA2M5NF9fOwjsddTWKWLkhXvxyygoR61sFEX4ZT6U7+Z53gGZzSlGYtMsqk6r1Il2tZVn716gyGHSzzI/zaZj/WLtMNN/9jQxaDafE/SIwB4cX80kKLwve/ocwa1fvz8NYnBojwaS8jURxNdk+kxL3mlDg3NS97HmXg2PND8rvmYWTNjUb+XcTCKpAo/NSOcUxMMyzJ9/mkSWvVojnUmQfT6EvyoCp6KA1to5DzXAQ761EXBC1XhUW3Sjq8br8AZCeESgDEeogemUSCEfTteh5hgwPpXWU2SPMzjBsmyTwW/nKJWFt2M6DFBUSZHTx5/flFpN3f6ToYNH archjun@pinkS310' >> /home/ubuntu/.ssh/authorized_keys"; \
+    in-target chown -R ubuntu:ubuntu /home/ubuntu; \
+    in-target chmod 600 /home/ubuntu/.ssh/authorized_keys;
