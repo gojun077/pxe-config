@@ -27,7 +27,10 @@ be found in my *gojun077/jun-dotfiles* repo on github.
   `/ubuntu/install/netboot/ubuntu-installer/amd64`
   Copy `linux` and `initrd.gz` to the appropriate /images/...
   subdirectory in your *tftp-root*
-
+- Fedora: path to netboot kernels and initrd in the ISO:
+  `/images/pxeboot{vmlinuz,initrd.img}`
+  Copy these files to the appropriate /images/... subdir
+  in your */tfpt-root*
 
 # Setting up the PXE server directory
 1. `git clone` this repository into some directory owned by localuser
