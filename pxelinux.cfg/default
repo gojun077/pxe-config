@@ -21,11 +21,17 @@ LABEL fedora23
   INITRD images/fedora23_x64/initrd.img
   APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc inst.vncconnect=192.168.95.97:5500 ksdevice=link inst.ks=http://192.168.95.97:8000/f23-3node.ks
 
-LABEL RHEL6.X
+LABEL RHEL5.11
+  MENU LABEL Boot RHEL5.11 (ks install)
+  KERNEL images/rhel5.11/vmlinuz
+  INITRD images/rhel5.11/initrd.img
+  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-auto-ks.cfg
+
+LABEL RHEL6.8
   MENU LABEL Boot RHEL6.8 (ks install)
   KERNEL images/rhel6.8/vmlinuz
   INITRD images/rhel6.8/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link inst.ks=http://192.168.95.97:8000/rhel6-auto-ks.cfg
+  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks.cfg
 
 LABEL xenial16.04_netinst
   MENU LABEL Boot Ubuntu 16.04 (netinst manual)
