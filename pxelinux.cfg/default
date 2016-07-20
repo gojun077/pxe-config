@@ -1,7 +1,7 @@
 DEFAULT menu.c32
 PROMPT 0
 TIMEOUT 50
-ONTIMEOUT xenial16.04_dvd_ps
+ONTIMEOUT RHEL7.0
 MENU TITLE PXE Boot Menu for Legacy BIOS
 
 LABEL arch64_http
