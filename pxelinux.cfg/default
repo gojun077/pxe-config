@@ -37,7 +37,7 @@ LABEL RHEL7.0
   MENU LABEL Boot RHEL 7.0 (ks install)
   KERNEL images/rhel7.0/vmlinuz
   INITRD images/rhel7.0/initrd.img
-  APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc inst.vncconnect=192.168.95.97:5500 ksdevice=link inst.ks=http://192.168.95.97:8000/rhel7.0-ks-busan.cfg
+  APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.97:8000/rhel7.0-ks-busan.cfg
 
 LABEL xenial16.04_netinst
   MENU LABEL Boot Ubuntu 16.04 (netinst manual)
