@@ -28,19 +28,19 @@ LABEL RHEL5.11
   APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-auto-ks.cfg
 
 LABEL RHEL5.11 X11
-  MENU LABEL Boot RHEL5.11 (ks install w/ x11)
+  MENU LABEL Boot RHEL5.11 X11 (ks install)
   KERNEL images/rhel5.11/vmlinuz
   INITRD images/rhel5.11/initrd.img
   APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-auto-ks-x11.cfg
 
 LABEL RHEL6.8
-  MENU LABEL Boot RHEL6.8 (ks install)
+  MENU LABEL Boot RHEL6.8 (ks install no X11)
   KERNEL images/rhel6.8/vmlinuz
   INITRD images/rhel6.8/initrd.img
   APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks.cfg
 
 LABEL RHEL6.8 X11
-  MENU LABEL Boot RHEL6.8 (ks install)
+  MENU LABEL Boot RHEL6.8 X11 (ks install)
   KERNEL images/rhel6.8/vmlinuz
   INITRD images/rhel6.8/initrd.img
   APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks-x11.cfg
