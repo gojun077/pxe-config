@@ -39,6 +39,12 @@ LABEL RHEL6.6 X11
   INITRD images/rhel6.6/initrd.img
   APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks-x11-no-local.cfg
 
+LABEL CENTOS6.6 X11
+  MENU LABEL Boot CENTOS6.6 X11 (ks install, local repo)
+  KERNEL images/centos6.6/vmlinuz
+  INITRD images/centos6.6/initrd.img
+  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/cent6-auto-ks-x11.cfg
+
 LABEL RHEL6.8
   MENU LABEL Boot RHEL6.8 (ks install no X11)
   KERNEL images/rhel6.8/vmlinuz
