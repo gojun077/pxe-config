@@ -10,8 +10,8 @@ LABEL arch64_http
   It allows you to install Arch Linux or perform system maintenance.
   ENDTEXT
   MENU LABEL Boot Arch Linux (x86_64) (HTTP)
-  LINUX images/arch_x64/vmlinuz-archlinux-x64
-  INITRD images/arch_x64/intel_ucode.img,images/arch_x64/archiso.img
+  LINUX images/archlinux/vmlinuz
+  INITRD images/archlinux/intel_ucode.img,images/arch_x64/archiso.img
   APPEND archisobasedir=arch archiso_http_srv=http://192.168.95.97:8080/
   SYSAPPEND 3
 
@@ -31,13 +31,13 @@ LABEL RHEL5.11 X11
   MENU LABEL Boot RHEL5.11 X11 (ks install)
   KERNEL images/rhel5.11/vmlinuz
   INITRD images/rhel5.11/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-auto-ks-x11.cfg
+  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-ks-x11-SKT-Bundang.cfg
 
 LABEL RHEL6.6 X11
-  MENU LABEL Boot RHEL6.6 X11 (ks install, no local repo)
+  MENU LABEL Boot RHEL6.6 X11 (ks install)
   KERNEL images/rhel6.6/vmlinuz
   INITRD images/rhel6.6/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks-x11-no-local.cfg
+  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-ks-x11-SKT-Bundang.cfg
 
 LABEL CENTOS6.6 X11
   MENU LABEL Boot CENTOS6.6 X11 (ks install, local repo)
@@ -62,6 +62,12 @@ LABEL RHEL7.0
   KERNEL images/rhel7.0/vmlinuz
   INITRD images/rhel7.0/initrd.img
   APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.97:8000/rhel7.0-ks-busan.cfg
+
+LABEL RHEL7.2
+  MENU LABEL Boot RHEL 7.2 (ks install)
+  KERNEL images/rhel7.2/vmlinuz
+  INITRD images/rhel7.2/initrd.img
+  APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.97:8000/rhel72-lds-rdo-mgmt.cfg
 
 LABEL xenial16.04_netinst
   MENU LABEL Boot Ubuntu 16.04 (netinst manual)
