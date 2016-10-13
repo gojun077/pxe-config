@@ -69,11 +69,11 @@ LABEL RHEL7.2
   INITRD images/rhel7.2/initrd.img
   APPEND ip=dhcp inst.repo=http://192.168.95.95:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.95:8000/rhel72-lds-rdo-mgmt.cfg
 
-LABEL RHEL7.2_TEST_BLACK
-  MENU LABEL Boot RHEL 7.2(Black Install)
+LABEL RHEL7.2_OSP_BIOS
+  MENU LABEL Boot RHEL 7.2(OSP BIOS)
   KERNEL images/rhel7.2/vmlinuz
   INITRD images/rhel7.2/initrd.img
-  APPEND ip=dhcp inst.repo=http://192.168.95.95:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.95:8000/test_rhel_bios_black.cfg
+  APPEND ip=dhcp inst.repo=http://192.168.95.95:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.95:8000/rhel72-osp-bios.cfg
 
 LABEL xenial16.04_netinst
   MENU LABEL Boot Ubuntu 16.04 (netinst manual)
