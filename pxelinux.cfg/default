@@ -1,7 +1,7 @@
-DEFAULT menu.c32
+DEFAULT vesamenu.c32
 PROMPT 0
-TIMEOUT 50
-ONTIMEOUT RHEL7.0
+TIMEOUT 500
+#ONTIMEOUT RHEL7.0
 MENU TITLE PXE Boot Menu for Legacy BIOS
 
 LABEL arch64_http
@@ -12,77 +12,59 @@ LABEL arch64_http
   MENU LABEL Boot Arch Linux (x86_64) (HTTP)
   LINUX images/archlinux/vmlinuz
   INITRD images/archlinux/intel_ucode.img,images/archlinux/archiso.img
-  APPEND archisobasedir=arch archiso_http_srv=http://192.168.95.97:8080/ ip=:::::eth0:dhcp
+  APPEND archisobasedir=arch archiso_http_srv=http://10.10.10.97:8080/ ip=:::::eth0:dhcp
   SYSAPPEND 3
 
 LABEL fedora23
   MENU LABEL Boot f23 (HTTP)
   KERNEL images/fedora23_x64/vmlinuz
   INITRD images/fedora23_x64/initrd.img
-  APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc inst.vncconnect=192.168.95.97:5500 ksdevice=link inst.ks=http://192.168.95.97:8000/f23-3node.ks
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc inst.vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/f23-3node.ks
 
 LABEL RHEL5.11
   MENU LABEL Boot RHEL5.11 (ks install no x11)
   KERNEL images/rhel5.11/vmlinuz
   INITRD images/rhel5.11/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-auto-ks.cfg
+  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel5-auto-ks.cfg
 
 LABEL RHEL5.11 X11
   MENU LABEL Boot RHEL5.11 X11 (ks install)
   KERNEL images/rhel5.11/vmlinuz
   INITRD images/rhel5.11/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel5-ks-x11-SKT-Bundang.cfg
+  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel5-ks-x11-SKT-Bundang.cfg
 
 LABEL RHEL6.6 X11
   MENU LABEL Boot RHEL6.6 X11 (ks install)
   KERNEL images/rhel6.6/vmlinuz
   INITRD images/rhel6.6/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-ks-x11-SKT-Bundang.cfg
+  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel6-ks-x11-SKT-Bundang.cfg
 
 LABEL CENTOS6.6 X11
   MENU LABEL Boot CENTOS6.6 X11 (ks install, local repo)
   KERNEL images/centos6.6/vmlinuz
   INITRD images/centos6.6/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/cent6-auto-ks-x11.cfg
+  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/cent6-auto-ks-x11.cfg
 
 LABEL RHEL6.8
   MENU LABEL Boot RHEL6.8 (ks install no X11)
   KERNEL images/rhel6.8/vmlinuz
   INITRD images/rhel6.8/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks.cfg
+  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel6-auto-ks.cfg
 
-LABEL RHEL6.8 X11
-  MENU LABEL Boot RHEL6.8 X11 (ks install)
-  KERNEL images/rhel6.8/vmlinuz
-  INITRD images/rhel6.8/initrd.img
-  APPEND ip=dhcp method=http://192.168.95.97:8080 vnc vncconnect=192.168.95.97:5500 ksdevice=link ks=http://192.168.95.97:8000/rhel6-auto-ks-x11.cfg
-
-LABEL RHEL7.0
-  MENU LABEL Boot RHEL 7.0 (ks install)
-  KERNEL images/rhel7.0/vmlinuz
-  INITRD images/rhel7.0/initrd.img
-  APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.97:8000/rhel7.0-ks-busan.cfg
-
-LABEL RHEL7.2
-  MENU LABEL Boot RHEL 7.2 (ks install)
+LABEL RHEL 7.2 OSP Storage
+  MENU LABEL RHEL 7.2 OSP Storage
   KERNEL images/rhel7.2/vmlinuz
   INITRD images/rhel7.2/initrd.img
-  APPEND ip=dhcp inst.repo=http://192.168.95.97:8080 inst.vnc ksdevice=link inst.ks=http://192.168.95.97:8000/rhel72-lds-rdo-mgmt.cfg
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-storage.cfg
 
-LABEL xenial16.04_netinst
-  MENU LABEL Boot Ubuntu 16.04 (netinst manual)
-  KERNEL images/xenial_x64/linux
-  INITRD  images/xenial_x64/initrd.gz
-  APPEND ip=dhcp
+LABEL RHEL 7.2 OSP Controller
+  MENU LABEL Boot RHEL 7.2 OSP Ctrl
+  KERNEL images/rhel7.2/vmlinuz
+  INITRD images/rhel7.2/initrd.img
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-controller.cfg
 
-LABEL xenial16.04_netinst-Netconsole
-  MENU LABEL Boot Ubuntu 16.04 (manual netinst over ssh)
-  KERNEL images/xenial_x64/linux
-  INITRD  images/xenial_x64/initrd.gz
-  APPEND ip=dhcp auto=true priority=critical locale=en_US.UTF-8 kdb-chooser/method=us netcfg/choose_interface=auto url=http://192.168.95.97:8000/netconsole.cfg
-
-LABEL xenial16.04_dvd_ps
-  MENU LABEL Boot Ubuntu 16.04 DVD w/ D-I Preseed
-  KERNEL images/xenialDVD/linux
-  INITRD images/xenialDVD/initrd.gz
-  APPEND auto=true priority=critical preseed/url=http://192.168.95.97:8000/xenialDVD.ps
+LABEL RHEL 7.2 OSP Compute
+  MENU LABEL Boot RHEL 7.2 OSP Compute
+  KERNEL images/rhel7.2/vmlinuz
+  INITRD images/rhel7.2/initrd.img
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-compute-fujitsu.cfg
