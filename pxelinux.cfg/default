@@ -1,6 +1,10 @@
 DEFAULT vesamenu.c32
 PROMPT 0
 TIMEOUT 500
+<<<<<<< HEAD
+
+MENU TITLE PXE Boot Menu for Legacy BIOS
+=======
 #ONTIMEOUT RHEL7.0
 MENU TITLE PXE Boot Menu for Legacy BIOS
 
@@ -50,6 +54,7 @@ LABEL RHEL6.8
   KERNEL images/rhel6.8/vmlinuz
   INITRD images/rhel6.8/initrd.img
   APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel6-auto-ks.cfg
+>>>>>>> 718e23482fd456117abc0a663cb65cd1f09c1b7a
 
 LABEL RHEL 7.2 OSP Storage
   MENU LABEL RHEL 7.2 OSP Storage
