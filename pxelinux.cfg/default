@@ -37,6 +37,12 @@ LABEL RHEL5.11 X11
   INITRD images/rhel5.11/initrd.img
   APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel5-ks-x11-SKT-Bundang.cfg
 
+LABEL RHEL6.5 X11
+  MENU LABEL Boot RHEL6.5 X11 (test conv to centos)
+  KERNEL images/rhel6.5/vmlinuz
+  INITRD images/rhel6.5/initrd.img
+  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel6-auto-ks-x11.cfg
+
 LABEL RHEL6.6 X11
   MENU LABEL Boot RHEL6.6 X11 (ks install)
   KERNEL images/rhel6.6/vmlinuz
