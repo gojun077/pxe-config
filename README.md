@@ -21,6 +21,9 @@ be found in my *gojun077/jun-dotfiles* repo on github.
   + BACKUP LOCATION for grub config: *tftp-root*`/EFI/BOOT/grub.cfg`
   + *tftp-root*`/uefi/bootx64.efi` (specified in `dnsmasq.conf`)
   + *tftp-root*`/grubx64.efi`
+- Note: you must copy all the syslinux .c32 files, boot roms
+  such as pxelinux.0, etc into ../pxelinux for BIOS pxe netbooting
+  to work
 
 # location of netboot kernels and initial ramdisk images
 - Ubuntu: the path to netboot kernels and initrd in the ISO is
