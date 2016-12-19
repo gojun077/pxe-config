@@ -1,7 +1,7 @@
 PXE SERVER CONFIG FILES
 =======================
 
-Last updated 2016-07-10
+Last updated 2016-12-19
 Jun Go gojun077@gmail.com
 
 This repo contains various config files including PXE
@@ -13,41 +13,41 @@ client architectures (Legacy BIOS or UEFI). *dnsmasq.conf* can
 be found in my *gojun077/jun-dotfiles* repo on github.
 
 # PATHS
-- I have defined my *tftp-root* path to be:
+- I have defined my `$TFTPROOT` path to be:
   `/usr/local/tftpboot/pxelinux`
 - I use CentOS 7's `bootx64.efi` and `grubx64.efi` so
   this repo includes the following paths:
-  + *tftp-root*/`grub.cfg`
-  + BACKUP LOCATION for grub config: *tftp-root*`/EFI/BOOT/grub.cfg`
-  + *tftp-root*`/uefi/bootx64.efi` (specified in `dnsmasq.conf`)
-  + *tftp-root*`/grubx64.efi`
-- Note: you must copy all the syslinux .c32 files, boot roms
-  such as pxelinux.0, etc into ../pxelinux for BIOS pxe netbooting
+  + $TFTPROOT*/`grub.cfg`
+  + BACKUP LOCATION for grub config: $TFTPROOT*`/EFI/BOOT/grub.cfg`
+  + $TFTPROOT*`/uefi/bootx64.efi` (specified in `dnsmasq.conf`)
+  + $TFTPROOT*`/bootx64.efi` (for UEFI PXE)
+  + $TFTPROOT*`/grubx64.efi`
+- Note: you must copy all the syslinux `.c32` files, boot roms
+  such as `pxelinux.0`, etc into `$TFTPROOT` for BIOS pxe netbooting
   to work
 
 # location of netboot kernels and initial ramdisk images
 - Ubuntu: the path to netboot kernels and initrd in the ISO is
   `/ubuntu/install/netboot/ubuntu-installer/amd64`
-  Copy `linux` and `initrd.gz` to the appropriate /images/...
-  subdirectory in your *tftp-root*
+  Copy `linux` and `initrd.gz` to the appropriate `/images/...`
+  subdirectory in your $TFTPROOT*
 - Fedora: path to netboot kernels and initrd in the ISO:
   `/images/pxeboot{vmlinuz,initrd.img}`
-  Copy these files to the appropriate /images/... subdir
+  Copy these files to the appropriate `/images/...` subdir
   in your */tfpt-root*
 
 # Setting up the PXE server directory
 1. `git clone` this repository into some directory owned by localuser
    I clone the pxe-config repo into `/usr/local/tftpboot/pxelinux`
    but use whatever directory names you're used to. This directory
-   will be your *tftp-root* directory
-2. Copy syslinux boot images into your *tftp-root*
+   will be your $TFTPROOT* directory
+2. Copy syslinux boot images into your $TFTPROOT*
    * Fedora
      - `dnf install syslinux`
      - cp /usr/share/syslinux/{pxelinux.0,\
        vesamenu.c32,ldlinux.c32,libcom32.c32,\
        libutil.c32} /path/to/tftp/root
-3. Create *tftp-root* subdir's
-   * images - kernel and initrd files from installation iso's
+3. Create $TFTPROOT* subdir's
    * images/{foo1,foo2} - where *foo* is the name of some OS whose
      kernel and initial ramdisk images you will store in the sub-dir
 
