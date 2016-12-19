@@ -13,6 +13,7 @@
 *.png
 *.pf2
 memdisk
-# PXE boot-related binaries
+# PXE image binaries (kernel, initrd)
 *.img
 vmlinuz
+linux
