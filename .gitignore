@@ -13,5 +13,6 @@
 *.png
 *.pf2
 memdisk
-# Sub-directories to ignore
-images/
+# PXE boot-related binaries
+*.img
+vmlinuz
