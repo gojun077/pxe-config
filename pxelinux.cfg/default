@@ -12,8 +12,8 @@ LABEL arch64_http
   It allows you to install Arch Linux or perform system maintenance.
   ENDTEXT
   MENU LABEL Boot Arch Linux (x86_64) (HTTP)
-  LINUX images/arch_x64/vmlinuz
-  INITRD images/arch_x64/intel_ucode.img,images/arch_x64/archiso.img
+  LINUX images/archlinux/vmlinuz
+  INITRD images/archlinux/intel_ucode.img,images/arch_x64/archiso.img
   APPEND archisobasedir=arch archiso_http_srv=http://10.10.10.97:8080/ ip=:::::eth0:dhcp
   SYSAPPEND 3
 
