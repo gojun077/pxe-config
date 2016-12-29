@@ -13,7 +13,7 @@ LABEL arch64_http
   ENDTEXT
   MENU LABEL Boot Arch Linux (x86_64) (HTTP)
   LINUX images/archlinux/vmlinuz
-  INITRD images/archlinux/intel_ucode.img,images/arch_x64/archiso.img
+  INITRD images/archlinux/intel_ucode.img,images/archlinux/archiso.img
   APPEND archisobasedir=arch archiso_http_srv=http://10.10.10.97:8080/ ip=:::::eth0:dhcp
   SYSAPPEND 3
 
