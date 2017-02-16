@@ -1,0 +1,81 @@
+ㅍfunction load_video {
+  insmod efi_gop
+  insmod efi_uga
+  insmod video_bochs
+  insmod video_cirrus
+  insmod all_video
+}
+
+load_video
+set gfxpayload=keep
+insmod gzio
+insmod part_gpt
+insmod ext2
+
+
+menuentry 'CentOS 7.3 DVD' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/centos73/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/centos73/initrd.img
+}
+
+menuentry 'F24 DVD' --class fedora --class gnu-linux --class gnu --class os {
+        linuxefi images/fedora24/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/fedora24/initrd.img
+}
+
+menuentry 'RHEL 6.6' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel6.6/vmlinuz ip=dhcp repo=http://10.10.10.97:8080 ksdevice=link ks=http://10.10.10.97:8000/rhel6-ks-x11-SKT-Bundang.cfg vnc vncconnect=10.10.10.97:5500
+        initrdefi images/rhel6.6/initrd.img
+}
+
+menuentry 'RHEL 5.11' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel5.11/vmlinuz ip=dhcp repo=http://10.10.10.97:8080 ksdevice=link ks=http://10.10.10.97:8000/rhel5-ks-x11-SKT-Bundang.cfg vnc vncconnect=10.10.10.97:5500
+        initrdefi images/rhel5.11/initrd.img
+}
+
+menuentry 'RHEL 7.2 storage' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel72_x64/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-uefi-storage.cfg inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/rhel72_x64/initrd.img
+}
+
+menuentry 'RHEL 7.2 controller' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel72_x64/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-uefi-controller.cfg inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/rhel72_x64/initrd.img
+}
+
+menuentry 'RHEL 7.2 compute' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel72_x64/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-uefi-compute-fujitsu.cfg inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/rhel72_x64/initrd.img
+}
+
+menuentry 'RHEL 7.2 KVM 2 disk' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel72_x64/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-UEFI-KVM-2disk.cfg inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/rhel72_x64/initrd.img
+}
+
+menuentry 'RHEL 7.2 KVM UEFI' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel72_x64/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-UEFI-KVM-single.cfg inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/rhel72_x64/initrd.img
+}
+
+menuentry 'Xenial 16.04 netinst ssh' --class ubuntu --class gnu-linux --class gnu --class os {
+        linuxefi images/xenial_x64/linux ip=dhcp auto=true priority=critical url=http://10.10.10.97:8000/netconsole.cfg
+        initrdefi images/xenial_x64/initrd.gz
+}
+
+menuentry 'Xenial 16.04 DVD preseed' --class ubuntu --class gnu-linux --class gnu --class os {
+        linuxefi images/xenialDVD/linux auto=true priority=critical url=http://10.10.10.97:8000/xenialDVD.ps
+        initrdefi images/xenialDVD/initrd.gz
+}
+
+menuentry 'Archlinux iso 2016.12' --class arch --class gnu-linux --class gnu --class os {
+        echo 'Loading kernel vmlinuz from installation ISO...'
+        linuxefi images/archlinux/vmlinuz archisobaseddir=arch archiso_http_srv=http://10.10.10.97:8080/ ip=:::::eth0:dhcp
+        echo 'Loading initial ramdisk ...'
+        initrdefi images/archlinux/intel_ucode.img images/archlinux/archiso.img
+}
+
+menuentry 'RHEL 6.6 UEFI' --class rhel --class gnu-linux --class gnu --class os {
+        linuxefi images/rhel6.6/vmlinuz ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel65-UEFI-KVM.cfg inst.vnc inst.vncconnect=10.10.10.97:5500
+        initrdefi images/rhel66/initrd.img
+}
