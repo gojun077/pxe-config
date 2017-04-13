@@ -1,10 +1,10 @@
 #DEFAULT vesamenu.c32
 DEFAULT menu.c32
 PROMPT 0
-TIMEOUT 500
+TIMEOUT 100
 
 MENU TITLE PXE Boot Menu for Legacy BIOS
-#ONTIMEOUT arch64_http_bios
+ONTIMEOUT "CentOS 7.3 ROKAF"
 
 LABEL arch64_http_bios
   TEXT HELP
@@ -22,6 +22,12 @@ LABEL CentOS 7.3 DVD vanilla
   KERNEL images/centos73/vmlinuz
   INITRD images/centos73/initrd.img
   APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500
+
+LABEL CentOS 7.3 ROKAF
+  MENU LABEL Boot CentOS 7.3 ROKAF Kickstart
+  KERNEL images/centos73/vmlinuz
+  INITRD images/centos73/initrd.img
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rokaf_netrabkup.ks
 
 LABEL CentOS 7.3 OSP VM
   MENU LABEL CentOS VM install (OSP node)
