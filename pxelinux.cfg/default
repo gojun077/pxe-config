@@ -4,7 +4,7 @@ PROMPT 0
 TIMEOUT 100
 
 MENU TITLE PXE Boot Menu for Legacy BIOS
-ONTIMEOUT "CentOS 7.3 ROKAF"
+ONTIMEOUT CentOS_7.3_ROKAF
 
 LABEL arch64_http_bios
   TEXT HELP
@@ -23,7 +23,7 @@ LABEL CentOS 7.3 DVD vanilla
   INITRD images/centos73/initrd.img
   APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500
 
-LABEL CentOS 7.3 ROKAF
+LABEL CentOS_7.3_ROKAF
   MENU LABEL Boot CentOS 7.3 ROKAF Kickstart
   KERNEL images/centos73/vmlinuz
   INITRD images/centos73/initrd.img
