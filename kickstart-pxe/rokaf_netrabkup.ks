@@ -7,6 +7,9 @@ url --url="http://10.10.10.97:8080"
 graphical
 # Run the Setup Agent on first boot
 firstboot --disable
+# Auto reboot when install is complete
+reboot
+# Disks to use for install
 ignoredisk --only-use=sda,sdb
 # Keyboard layouts
 keyboard --vckeymap=us --xlayouts='us'
