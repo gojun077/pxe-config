@@ -19,7 +19,7 @@ network  --bootproto=none --device=enp3s0f1 --onboot=no --no-activate
 network  --hostname=localhost.localdomain
 
 # Root password
-rootpw --iscrypted $6$NuMeITQbXX1nVFk1$xW/fLFGVSlTPBYcVg5J1.GxAopZfFVmvOiXn/g1zrkAl.Fs8dZJv86rpliU8w/ucuSArilm5KQsJ6yUpRQsrt.
+rootpw --iscrypted $6$YvMSFAwlccylBnIA$PN89nQc0ok7UTcUQ98AZKGIO8ywk4NmlkrUL6LPswoX6ENl/sTk9iyeYDddb02jEHzdk/bXueNVSqBfqq4/UC0
 # System services
 services --enabled="chronyd"
 # System timezone
