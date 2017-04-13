@@ -50,6 +50,7 @@ chrony
 kexec-tools
 rsync
 vim-common
+vim-enhanced
 
 %end
 
