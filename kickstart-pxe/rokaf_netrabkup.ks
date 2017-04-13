@@ -15,7 +15,7 @@ lang en_US.UTF-8
 
 # Network information
 network  --bootproto=dhcp --device=enp3s0f0 --onboot=yes --ipv6=auto
-network  --bootproto=none --device=enp3s0f1 --onboot=no --no-activate
+network  --device=enp3s0f1 --onboot=no
 network  --hostname=localhost.localdomain
 
 # Root password
