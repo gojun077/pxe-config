@@ -26,7 +26,7 @@ rootpw --iscrypted $6$YvMSFAwlccylBnIA$PN89nQc0ok7UTcUQ98AZKGIO8ywk4NmlkrUL6LPsw
 # System services
 services --enabled="chronyd"
 # System timezone
-timezone America/New_York --isUtc
+timezone UTC --isUtc
 user --groups=wheel --name=super --password=$6$BA9TIqcMgsDTSyFt$UcxmOUbovIY1YyTQJMChegScdZsj.AFUlABVe5A5ZQzgb3t/bElBze4O/d.aQsMlNksuVLQEL0kg7EoT4CU/s. --iscrypted --gecos="super"
 # System bootloader configuration
 bootloader --append=" crashkernel=auto" --location=mbr --boot-drive=sda
