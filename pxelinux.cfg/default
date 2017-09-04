@@ -6,6 +6,13 @@ TIMEOUT 100
 MENU TITLE PXE Boot Menu for Legacy BIOS
 ONTIMEOUT CentOS_7.3_ROKAF
 
+
+LABEL CentOS_7.2_Athene
+  MENU LABEL Boot CentOS 7.2 Athene Kickstart
+  KERNEL images/centos72/vmlinuz
+  INITRD images/centos72/initrd.img
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/cent72_BIOS_Athene.cfg
+
 LABEL arch64_http_bios
   TEXT HELP
   Boot the Arch Linux (x86_64) live medium (Using HTTP) for BIOS.
