@@ -37,24 +37,24 @@ LABEL CentOS 7.3 OSP VM
 
 LABEL CENTOS6.6 X11
   MENU LABEL Boot CENTOS6.6 X11 (ks install, local repo)
-  KERNEL images/centos6.6/vmlinuz
-  INITRD images/centos6.6/initrd.img
+  KERNEL images/centos66/vmlinuz
+  INITRD images/centos66/initrd.img
   APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/cent6-auto-ks-x11.cfg
 
 LABEL RHEL 7.2 OSP Storage
   MENU LABEL RHEL 7.2 OSP Storage
-  KERNEL images/rhel7.2/vmlinuz
-  INITRD images/rhel7.2/initrd.img
+  KERNEL images/rhel72/vmlinuz
+  INITRD images/rhel72/initrd.img
   APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-storage.cfg
 
 LABEL RHEL 7.2 OSP Controller
   MENU LABEL Boot RHEL 7.2 OSP Ctrl
-  KERNEL images/rhel7.2/vmlinuz
-  INITRD images/rhel7.2/initrd.img
+  KERNEL images/rhel72/vmlinuz
+  INITRD images/rhel72/initrd.img
   APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-controller.cfg
 
 LABEL RHEL 7.2 OSP Compute
   MENU LABEL Boot RHEL 7.2 OSP Compute
-  KERNEL images/rhel7.2/vmlinuz
-  INITRD images/rhel7.2/initrd.img
+  KERNEL images/rhel72/vmlinuz
+  INITRD images/rhel72/initrd.img
   APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-compute-fujitsu.cfg
