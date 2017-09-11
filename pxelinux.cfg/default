@@ -8,10 +8,10 @@ ONTIMEOUT CentOS_7.2_Athene
 
 
 LABEL CentOS_7.2_Athene
-  MENU LABEL Boot CentOS 7.2 Athene Kickstart
+  MENU LABEL Boot CentOS 7.2 DVD Athene Kickstart
   KERNEL images/centos72/vmlinuz
   INITRD images/centos72/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/cent72_BIOS_Athene.cfg
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/cent72_BIOS_Athene_ko_KR_DVD.cfg
 
 LABEL arch64_http_bios
   TEXT HELP
