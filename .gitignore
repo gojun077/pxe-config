@@ -15,5 +15,6 @@
 memdisk
 # PXE image binaries (kernel, initrd)
 *.img
-vmlinuz
+vmlinuz*
 linux
+initrd*
