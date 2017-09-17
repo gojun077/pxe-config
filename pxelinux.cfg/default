@@ -26,6 +26,6 @@ LABEL arch64_http_bios
 
 LABEL Ubuntu Desktop
   MENU LABEL Boot Ubuntu Desktop DVD with D-I auto install
-  KERNEL images/ubuntu1704/linux
-  INITRD images/ubuntu1704/initrd.gz
+  KERNEL images/ubuntu1704/vmlinuz.efi
+  INITRD images/ubuntu1704/initrd.lz
   APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
