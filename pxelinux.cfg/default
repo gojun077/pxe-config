@@ -24,44 +24,8 @@ LABEL arch64_http_bios
   APPEND archisobasedir=arch archiso_http_srv=http://10.10.10.97:8080/ ip=:::::eth0:dhcp
   SYSAPPEND 3
 
-LABEL CentOS 7.3 DVD vanilla
-  MENU LABEL Boot CentOS 7.3 DVD iso
-  KERNEL images/centos73/vmlinuz
-  INITRD images/centos73/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500
-
-LABEL CentOS_7.3_ROKAF
-  MENU LABEL Boot CentOS 7.3 ROKAF Kickstart
-  KERNEL images/centos73/vmlinuz
-  INITRD images/centos73/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rokaf_netrabkup.ks
-
-LABEL CentOS 7.3 OSP VM
-  MENU LABEL CentOS VM install (OSP node)
-  KERNEL images/centos73/vmlinuz
-  INITRD images/centos73/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 ksdevice=link ks=http://10.10.10.97:8000/cent73_BIOS_VM_OSP.cfg inst.vnc vncconnect=10.10.10.97:5500
-
-LABEL CENTOS6.6 X11
-  MENU LABEL Boot CENTOS6.6 X11 (ks install, local repo)
-  KERNEL images/centos66/vmlinuz
-  INITRD images/centos66/initrd.img
-  APPEND ip=dhcp method=http://10.10.10.97:8080 vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/cent6-auto-ks-x11.cfg
-
-LABEL RHEL 7.2 OSP Storage
-  MENU LABEL RHEL 7.2 OSP Storage
-  KERNEL images/rhel72/vmlinuz
-  INITRD images/rhel72/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-storage.cfg
-
-LABEL RHEL 7.2 OSP Controller
-  MENU LABEL Boot RHEL 7.2 OSP Ctrl
-  KERNEL images/rhel72/vmlinuz
-  INITRD images/rhel72/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-controller.cfg
-
-LABEL RHEL 7.2 OSP Compute
-  MENU LABEL Boot RHEL 7.2 OSP Compute
-  KERNEL images/rhel72/vmlinuz
-  INITRD images/rhel72/initrd.img
-  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link inst.ks=http://10.10.10.97:8000/rhel72-osp-bios-compute-fujitsu.cfg
+LABEL Ubuntu Desktop
+  MENU LABEL Boot Ubuntu Desktop DVD with D-I auto install
+  KERNEL images/ubuntu1704/linux
+  INITRD images/ubuntu1704/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
