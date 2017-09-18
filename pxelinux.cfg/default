@@ -4,8 +4,14 @@ PROMPT 0
 TIMEOUT 100
 
 MENU TITLE PXE Boot Menu for Legacy BIOS
-ONTIMEOUT Ubuntu Desktop
+ONTIMEOUT Ubuntu_Server
 
+
+LABEL Ubuntu_Server
+  MENU LABEL Boot Ubuntu Server with D-I auto install
+  KERNEL images/ubuntu1704/linux
+  INITRD images/ubuntu1704/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
 
 LABEL CentOS_7.2_Athene
   MENU LABEL Boot CentOS 7.2 DVD Athene Kickstart
@@ -24,8 +30,8 @@ LABEL arch64_http_bios
   APPEND archisobasedir=arch archiso_http_srv=http://10.10.10.97:8080/ ip=:::::eth0:dhcp
   SYSAPPEND 3
 
-LABEL Ubuntu Desktop
-  MENU LABEL Boot Ubuntu Desktop DVD with D-I auto install
+LABEL Ubuntu_Desktop
+  MENU LABEL Boot Ubuntu Desktop DVD
   KERNEL images/ubuntu1704/vmlinuz.efi
   INITRD images/ubuntu1704/initrd.lz
-  APPEND root=http://10.10.10.97:8080/ ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
+  APPEND boot=casper netboot=nfs nfsroot=10.10.10.97/path/to/root ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
