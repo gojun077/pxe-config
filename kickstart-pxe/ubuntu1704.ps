@@ -361,8 +361,9 @@ d-i partman/confirm_nooverwrite boolean true
 ### Apt setup
 # You can choose to install restricted and universe software, or to install
 # software from the backports repository.
-d-i apt-setup/restricted boolean false
-d-i apt-setup/universe boolean false
+d-i apt-setup/restricted boolean true
+d-i apt-setup/universe boolean true
+d-i apt-setup/multiverse boolean true
 d-i apt-setup/backports boolean false
 # Uncomment this if you don't want to use a network mirror.
 #d-i apt-setup/use_mirror boolean false
@@ -405,7 +406,7 @@ tasksel tasksel/first multiselect ubuntu-desktop
 
 d-i pkgsel/include string openssh-server build-essential
 d-i pkgsel/include string python2.7 vim manpages man-db
-d-i pkgsel/include string 
+d-i pkgsel/include string git ufw emacs
 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
