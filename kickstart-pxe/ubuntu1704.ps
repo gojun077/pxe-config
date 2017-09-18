@@ -13,6 +13,7 @@
 d-i debian-installer/language string en
 d-i debian-installer/country string KR
 d-i debian-installer/locale string en_US.UTF-8
+
 #d-i debian-installer/locale string ko_KR.UTF-8
 # Optionally specify additional locales to be generated.
 #d-i localechooser/supported-locales multiselect en_US.UTF-8, nl_NL.UTF-8
@@ -22,8 +23,10 @@ d-i auto-install/enabled  boolean true
 
 # Keyboard selection.
 # Disable automatic (interactive) keymap detection.
+
 d-i console-setup/ask_detect boolean false
 d-i keyboard-configuration/xkb-keymap select us
+
 # To select a variant of the selected layout:
 #d-i keyboard-configuration/xkb-keymap select us(dvorak)
 #d-i keyboard-configuration/toggle select No toggling
@@ -57,6 +60,7 @@ d-i netcfg/choose_interface select auto
 # If you want the preconfiguration file to work on systems both with and
 # without a dhcp server, uncomment these lines and the static network
 # configuration below.
+
 d-i netcfg/dhcp_failed note
 d-i netcfg/dhcp_options select Configure network manually
 
@@ -128,7 +132,7 @@ d-i mirror/http/mirror select kr.archive.ubuntu.com
 # Suite to install.
 #d-i mirror/suite string xenial
 # Suite to use for loading installer components (optional).
-#d-i mirror/udeb/suite string xenial
+#d-i mirror/udeb/suite string zapus
 # Components to use for loading installer components (optional).
 #d-i mirror/udeb/components multiselect main, restricted
 
@@ -204,7 +208,8 @@ d-i clock-setup/ntp boolean true
 # and not e.g. /dev/discs/disc0/disc).
 # For example, to use the first SCSI/SATA hard disk:
 
-d-i partman-auto/disk string /dev/sda
+#d-i partman-auto/method string regular
+#d-i partman-auto/disk string /dev/sda
 
 # In addition, you'll need to specify the method to use.
 # The presently available methods are:
@@ -390,11 +395,14 @@ d-i debian-installer/allow_unauthenticated boolean false
 
 ### Package selection
 #tasksel tasksel/first multiselect ubuntu-server
+
 tasksel tasksel/first multiselect ubuntu-desktop
+
 #tasksel tasksel/first multiselect lamp-server, print-server
 #tasksel tasksel/first multiselect kubuntu-desktop
 
 # Individual additional packages to install
+
 d-i pkgsel/include string openssh-server build-essential
 d-i pkgsel/include string python2.7 vim manpages man-db
 
