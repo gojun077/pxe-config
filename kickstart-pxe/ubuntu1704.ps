@@ -405,6 +405,7 @@ tasksel tasksel/first multiselect ubuntu-desktop
 
 d-i pkgsel/include string openssh-server build-essential
 d-i pkgsel/include string python2.7 vim manpages man-db
+d-i pkgsel/include string 
 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
@@ -528,6 +529,6 @@ d-i debian-installer/exit/poweroff boolean false
 # instead of from stdin
 d-i preseed/late_command string \
     in-target mkdir -p /home/ubuntu/.ssh; \
-    in-target /bin/sh -c "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7l11E8BQUA2M5NF9fOwjsddTWKWLkhXvxyygoR61sFEX4ZT6U7+Z53gGZzSlGYtMsqk6r1Il2tZVn716gyGHSzzI/zaZj/WLtMNN/9jQxaDafE/SIwB4cX80kKLwve/ocwa1fvz8NYnBojwaS8jURxNdk+kxL3mlDg3NS97HmXg2PND8rvmYWTNjUb+XcTCKpAo/NSOcUxMMyzJ9/mkSWvVojnUmQfT6EvyoCp6KA1to5DzXAQ761EXBC1XhUW3Sjq8br8AZCeESgDEeogemUSCEfTteh5hgwPpXWU2SPMzjBsmyTwW/nKJWFt2M6DFBUSZHTx5/flFpN3f6ToYNH archjun@pinkS310' >> /home/ubuntu/.ssh/authorized_keys"; \
+    in-target /bin/sh -c "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDInfKkEJzxxGNPTJNAPipBmTolCaSkDRUFH5oeO1nmorSG4u5F466SjlQ3xclwRnw71MBaHUusfT8zROAFA1ZXKhvK0H2OmflYGkDA+U5FX3/19vYZb/SfSmO1xapepyIr+bxPYz8RikWCrUOd50IzdXmQrdGoWeh3XZ5bnG5Xjozldi/2PDvwlFwCFbyWHdcs59nvTaBQyYerx+uDKbY0eW/lZ9wxtg/rUzctDQzNwbYW9zcNengn2Ij57+E3aXWTCFBYVxUmhB8dhreNJnWhBApZd9RLxlxTEcjaphJQrdKSJMvcBxA4B3ZIaNk0q7eLg2cJItiUawxmBgWMzouH archjun@pinkS310' >> /home/ubuntu/.ssh/authorized_keys"; \
     in-target chown -R ubuntu:ubuntu /home/ubuntu; \
     in-target chmod 600 /home/ubuntu/.ssh/authorized_keys;
