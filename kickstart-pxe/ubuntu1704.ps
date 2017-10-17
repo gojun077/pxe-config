@@ -404,9 +404,9 @@ tasksel tasksel/first multiselect ubuntu-desktop
 
 # Individual additional packages to install
 
-d-i pkgsel/include string openssh-server build-essential
+d-i pkgsel/include string openssh-server build-essential screen
 d-i pkgsel/include string python2.7 vim manpages man-db
-d-i pkgsel/include string git ufw emacs
+d-i pkgsel/include string git ufw emacs terminator
 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade

@@ -4,7 +4,7 @@ PROMPT 0
 TIMEOUT 100
 
 MENU TITLE PXE Boot Menu for Legacy BIOS
-ONTIMEOUT Ubuntu_Server
+ONTIMEOUT CentOS_7.4_OSP_Newton
 
 
 LABEL Ubuntu_Server
@@ -12,6 +12,12 @@ LABEL Ubuntu_Server
   KERNEL images/ubuntu1704/linux
   INITRD images/ubuntu1704/initrd.gz
   APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
+
+LABEL CentOS_7.4_OSP_Newton
+  MENU LABEL Boot CentOS 7.4 DVD Kickstart for OSP Newton node
+  KERNEL images/centos74/vmlinuz
+  INITRD images/centos74/initrd.img
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/centos74_BIOS_osp_newton.cfg
 
 LABEL CentOS_7.2_Athene
   MENU LABEL Boot CentOS 7.2 DVD Athene Kickstart
