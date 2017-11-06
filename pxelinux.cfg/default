@@ -7,11 +7,11 @@ MENU TITLE PXE Boot Menu for Legacy BIOS
 ONTIMEOUT CentOS_7.4_OSP_Newton
 
 
-LABEL Ubuntu_Server
-  MENU LABEL Boot Ubuntu Server with D-I auto install
-  KERNEL images/ubuntu1704/linux
-  INITRD images/ubuntu1704/initrd.gz
-  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
+LABEL RHEL72_Athene3_dpdk
+  MENU LABEL Boot RHEL 7.2 DVD Kickstart for Athene 3.0 node
+  KERNEL images/rhel72/vmlinuz
+  INITRD images/rhel72/initrd.img
+  APPEND ip=dhcp inst.repo=http://10.10.10.97:8080 inst.vnc vncconnect=10.10.10.97:5500 ksdevice=link ks=http://10.10.10.97:8000/rhel72_BIOS_Athene_Daejeon_dpdk.cfg
 
 LABEL CentOS_7.4_OSP_Newton
   MENU LABEL Boot CentOS 7.4 DVD Kickstart for OSP Newton node
@@ -41,3 +41,9 @@ LABEL Ubuntu_Desktop
   KERNEL images/ubuntu1704/vmlinuz.efi
   INITRD images/ubuntu1704/initrd.lz
   APPEND boot=casper netboot=nfs nfsroot=10.10.10.97/path/to/root ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
+
+LABEL Ubuntu_Server
+  MENU LABEL Boot Ubuntu Server with D-I auto install
+  KERNEL images/ubuntu1704/linux
+  INITRD images/ubuntu1704/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
