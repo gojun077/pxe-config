@@ -42,8 +42,14 @@ LABEL Ubuntu_Desktop
   INITRD images/ubuntu1704/initrd.lz
   APPEND boot=casper netboot=nfs nfsroot=10.10.10.97/path/to/root ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
 
-LABEL Ubuntu_Server
-  MENU LABEL Boot Ubuntu Server with D-I auto install
+LABEL Ubuntu_Server 17.04
+  MENU LABEL Boot Ubuntu Server 1704 with D-I auto install
   KERNEL images/ubuntu1704/linux
   INITRD images/ubuntu1704/initrd.gz
   APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1704.ps
+
+LABEL Ubuntu_Server 16.04
+  MENU LABEL Boot Ubuntu Server 1604 with D-I auto install
+  KERNEL images/ubuntu1604/linux
+  INITRD images/ubuntu1604/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1604.ps
