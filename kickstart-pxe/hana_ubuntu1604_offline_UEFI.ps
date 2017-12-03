@@ -7,9 +7,25 @@
 # This .ps file will be slipstreamed into a custom Server iso image
 # to enable automated installation via DVD/USB
 
+# Workaround for D-I failing to install to a disk that with
+# existing partitions (that somehow get mounted)
+d-i partman/early_command string \
+USBDEV=$(list-devices usb-partition | sed "s/\(.*\)./\1/");\
+BOOTDEV=$(list-devices disk | grep -v "$USBDEV" | head -1);\
+debconf-set partman-auto/disk $BOOTDEV;\
+debconf-set grub-installer/bootdev $BOOTDEV; \
+umount /media;
+
+# Locale settings
+d-i debian-installer/locale string en_US.UTF-8
 d-i debian-installer/language string en
 d-i debian-installer/country string KR
-d-i debian-installer/locale string en_US.UTF-8
+
+# Keyboard selection.
+# Disable automatic (interactive) keymap detection.
+d-i console-setup/ask_detect boolean false
+d-i keyboard-configuration/xkb-keymap select us
+
 
 #d-i debian-installer/locale string ko_KR.UTF-8
 # Optionally specify additional locales to be generated.
@@ -17,12 +33,6 @@ d-i debian-installer/locale string en_US.UTF-8
 
 d-i debconf/priority      select critical
 d-i auto-install/enabled  boolean true
-
-# Keyboard selection.
-# Disable automatic (interactive) keymap detection.
-
-d-i console-setup/ask_detect boolean false
-d-i keyboard-configuration/xkb-keymap select us
 
 # To select a variant of the selected layout:
 #d-i keyboard-configuration/xkb-keymap select us(dvorak)
