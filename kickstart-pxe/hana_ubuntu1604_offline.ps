@@ -7,6 +7,16 @@
 # This .ps file will be slipstreamed into a custom Server iso image
 # to enable automated installation via DVD/USB
 
+# Workaround for D-I failing to install to a disk that with
+# existing partitions (that somehow get mounted)
+d-i partman/early_command string \
+USBDEV=$(list-devices usb-partition | sed "s/\(.*\)./\1/");\
+BOOTDEV=$(list-devices disk | grep -v "$USBDEV" | head -1);\
+debconf-set partman-auto/disk $BOOTDEV;\
+debconf-set grub-installer/bootdev $BOOTDEV; \
+umount /media;
+
+# Locale settings
 d-i debian-installer/language string en
 d-i debian-installer/country string KR
 d-i debian-installer/locale string en_US.UTF-8
