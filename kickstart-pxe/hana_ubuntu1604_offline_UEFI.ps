@@ -270,6 +270,22 @@ d-i partman/default_filesystem string ext4
 #                      method{ swap } format{ }                \
 #              .
 
+
+# Set the below to 'true' for a UEFI-enabled system. If set to false,
+# /var/lib/partman/uefi_ignore will be touched
+d-i partman-efi/non_efi_system boolean true
+
+# enforce usage of GPT - a must have to use EFI!
+d-i partman-basicfilesystems/choose_label string gpt
+d-i partman-basicfilesystems/default_label string gpt
+d-i partman-partitioning/choose_label string gpt
+d-i partman-partitioning/default_label string gpt
+d-i partman/choose_label string gpt
+d-i partman/default_label string gpt
+
+d-i partman-auto/choose_recipe select boot-root
+
+
 # Custom Partition Layout for Hana DC
 #    - root partition: at least 8 GB in size, no max size
 #    - boot partition: at least 512 MB in size, max 512 MB
@@ -283,14 +299,14 @@ d-i partman/default_filesystem string ext4
 
 d-i partman-auto/expert_recipe string                         \
     boot-root ::                                              \
-        256 266 256 free \
+        512 522 512 free \
             $iflabel{ gpt } \
             $reusemethod{ } \
             method{ efi } \
             format{ } \
         . \
-        512 522 512 ext4                                      \
-            $primary{ } $bootable{ }                          \
+        256 266 256 ext4                                      \
+            $defaultignore{ }                                 \
             method{ format } format{ }                        \
             use_filesystem{ } filesystem{ ext4 }              \
             mountpoint{ /boot }                               \
