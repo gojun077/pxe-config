@@ -283,6 +283,12 @@ d-i partman/default_filesystem string ext4
 
 d-i partman-auto/expert_recipe string                         \
     boot-root ::                                              \
+        256 266 256 free \
+            $iflabel{ gpt } \
+            $reusemethod{ } \
+            method{ efi } \
+            format{ } \
+        . \
         512 522 512 ext4                                      \
             $primary{ } $bootable{ }                          \
             method{ format } format{ }                        \
