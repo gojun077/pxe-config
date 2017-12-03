@@ -64,7 +64,7 @@ d-i netcfg/choose_interface select auto
 d-i netcfg/dhcp_failed note
 d-i netcfg/dhcp_options select Configure network manually
 
-Static network configuration.
+# Static network configuration.
 
 # IPv4 settings - Assumes PXE server @ 10.10.10.97 w/ip_forward=1
 d-i netcfg/get_ipaddress string 10.10.10.111
