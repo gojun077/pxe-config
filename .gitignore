@@ -18,3 +18,5 @@ memdisk
 vmlinuz*
 linux
 initrd*
+# Ignore scripts for registering a system with RHSM
+*.rhsm
