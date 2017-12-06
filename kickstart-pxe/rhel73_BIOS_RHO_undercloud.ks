@@ -22,7 +22,7 @@ firewall --disabled
 reboot
 
 # CHANGEME
-network  --hostname=undercloud
+network  --hostname=undercloud.atto.org
 
 # System timezone
 timezone Asia/Seoul --isUtc
