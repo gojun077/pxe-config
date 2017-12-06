@@ -34,8 +34,8 @@ zerombr
 bootloader --location=mbr --boot-drive=vda
 
 # Disk partitioning information
-part /boot --fstype=ext4    --ondisk=sda --size=384
-part pv.001    --fstype="lvmpv"  --ondisk=sda  --size=1 --grow
+part /boot --fstype=ext4    --ondisk=vda --size=384
+part pv.001    --fstype="lvmpv"  --ondisk=vda  --size=1 --grow
 volgroup rhel73  --pesize=4096 pv.001
 logvol swap    --fstype="swap"   --size=2048 --name=swap --vgname=rhel73
 # root part will take up all available space:
