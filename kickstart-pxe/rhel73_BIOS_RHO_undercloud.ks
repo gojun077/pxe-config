@@ -66,16 +66,21 @@ wget
 # will be forwarded to the Internet
 
 # To register your system with RedHat, you will have to run the
-# 'subscription-manager' command from the CLI:
-#
+# 'subscription-manager' command from the CLI and do these manual steps:
 #
 # subscription-manager register --username <username> --password <password>
-#
 # subscription-manager list --available --all
-#
 # subscription-manager attach --pool=<poolID>
 
-# OR you can try the following in this kickstart file:
-# /usr/sbin/subscription-manager register --username <redhat_login_username> --password <redhat_login_password> --auto-attach
+# Or just download and run this script from your PXE server
+# (I added *.rhsm filetype to .gitignore)
+
+/bin/wget http://10.10.10.97:8000/register-rhel7.rhsm
+/bin/bash register-rhel7.rhsm 1>/root/post_install.log 2>&1
+/bin/sbin/subscription-manager repos --enable rhel-7-server-extras-rpms
+/bin/sbin/subscription-manager repos --enable rhel-7-server-optional-rpms
+/bin/sbin/subscription-manager repos --enable rhel-7-server-supplementary-rpms
+/bin/yum install -y screen vim-enhanced
+/bin/rm register-rhel7.rhsm
 
 %end
