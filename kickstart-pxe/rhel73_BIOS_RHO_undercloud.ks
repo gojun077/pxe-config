@@ -31,7 +31,7 @@ clearpart --all --initlabel
 # Delete MBR / GPT
 zerombr
 # System bootloader configuration
-bootloader --location=mbr --boot-drive=sda
+bootloader --location=mbr --boot-drive=vda
 
 # Disk partitioning information
 part /boot --fstype=ext4    --ondisk=sda --size=384
