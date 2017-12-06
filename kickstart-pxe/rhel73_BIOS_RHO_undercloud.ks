@@ -77,9 +77,10 @@ wget
 
 /bin/wget http://10.10.10.97:8000/register-rhel7.rhsm
 /bin/bash register-rhel7.rhsm 1>/root/post_install.log 2>&1
-/bin/sbin/subscription-manager repos --enable rhel-7-server-extras-rpms
-/bin/sbin/subscription-manager repos --enable rhel-7-server-optional-rpms
-/bin/sbin/subscription-manager repos --enable rhel-7-server-supplementary-rpms
+/sbin/subscription-manager repos --enable rhel-7-server-rh-common-rpms
+/sbin/subscription-manager repos --enable rhel-7-server-extras-rpms
+/sbin/subscription-manager repos --enable rhel-7-server-optional-rpms
+/sbin/subscription-manager repos --enable rhel-7-server-supplementary-rpms
 /bin/yum install -y screen vim-enhanced
 /bin/rm register-rhel7.rhsm
 
