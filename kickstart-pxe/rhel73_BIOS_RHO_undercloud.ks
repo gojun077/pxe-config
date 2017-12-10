@@ -88,6 +88,6 @@ wget
 
 /bin/yum update -y
 /bin/yum install -y screen vim-enhanced 1>>/root/post_install.log 2>&1
-/bin/rm register-rhel7.rhsm 1>>/root/post_install.log 2>&1
+/bin/rm "*.rhsm" 1>>/root/post_install.log 2>&1
 
 %end
