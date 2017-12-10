@@ -55,6 +55,7 @@ services --disabled="NetworkManager"
 %packages
 chrony
 deltarpm
+git
 parted
 wget
 %end
