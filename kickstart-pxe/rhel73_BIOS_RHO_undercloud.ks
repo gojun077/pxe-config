@@ -75,13 +75,19 @@ wget
 # Or just download and run this script from your PXE server
 # (I added *.rhsm filetype to .gitignore)
 
-/bin/wget http://10.10.10.97:8000/register-rhel7.rhsm
-/bin/bash register-rhel7.rhsm 1>/root/post_install.log 2>&1
-/sbin/subscription-manager repos --enable rhel-7-server-rh-common-rpms
-/sbin/subscription-manager repos --enable rhel-7-server-extras-rpms
-/sbin/subscription-manager repos --enable rhel-7-server-optional-rpms
-/sbin/subscription-manager repos --enable rhel-7-server-supplementary-rpms
-/bin/yum install -y screen vim-enhanced
-/bin/rm register-rhel7.rhsm
+/bin/wget http://10.10.10.97:8000/register-rhel7.rhsm 1>>/root/post_install.log 2>&1
+/bin/wget http://10.10.10.97:8000/RHOP10_pool_register.rhsm 1>>/root/post_install.log 2>&1
+/bin/bash register-rhel7.rhsm 1>>/root/post_install.log 2>&1
+/bin/bash RHOP10_pool_register.rhsm 1>>/root/post_install.log 2>&1
+/sbin/subscription-manager repos --enable rhel-7-server-rh-common-rpms 1>>/root/post_install.log 2>&1
+/sbin/subscription-manager repos --enable rhel-7-server-extras-rpms 1>>/root/post_install.log 2>&1
+#/sbin/subscription-manager repos --enable rhel-7-server-optional-rpms 1>>/root/post_install.log 2>&1
+#/sbin/subscription-manager repos --enable rhel-7-server-supplementary-rpms 1>>/root/post_install.log 2>&1
+/sbin/subscription-manager repos --enable rhel-ha-for-rhel-7-server-rpms 1>>/root/post_install.log 2>&1
+/sbin/subscription-manager repos --enable rhel-7-server-openstack-10-rpms 1>>/root/post_install.log 2>&1
+
+/bin/yum update -y
+/bin/yum install -y screen vim-enhanced 1>>/root/post_install.log 2>&1
+/bin/rm register-rhel7.rhsm 1>>/root/post_install.log 2>&1
 
 %end
