@@ -209,7 +209,7 @@ d-i clock-setup/ntp boolean true
 # and not e.g. /dev/discs/disc0/disc).
 # For example, to use the first SCSI/SATA hard disk:
 
-#d-i partman-auto/method string regular
+d-i partman-auto/method string regular
 #d-i partman-auto/disk string /dev/sda
 
 # In addition, you'll need to specify the method to use.
