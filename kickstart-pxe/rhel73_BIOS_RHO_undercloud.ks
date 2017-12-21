@@ -1,5 +1,7 @@
 #version=RHEL7
-# 2017.12.08
+# Last Updated: 2017.12.21
+# Updated by: Peter Go
+#
 # Kickstart for installing RHEL 7.3 on a BIOS firmware machine
 # to be used as an undercloud node for Redhat Openstack Newton (10)
 #
@@ -57,6 +59,7 @@ chrony
 deltarpm
 git
 parted
+tcpdump
 wget
 %end
 
