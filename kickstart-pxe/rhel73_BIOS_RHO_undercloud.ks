@@ -92,6 +92,14 @@ wget
 
 /bin/yum update -y
 /bin/yum install -y screen vim-enhanced 1>>/root/post_install.log 2>&1
+/bin/yum install -y python-tripleoclient 1>>/root/post_install.log 2>&1
+/bin/yum install rhosp-director-images 1>>/root/post_install.log 2>&1
 /bin/rm "*.rhsm" 1>>/root/post_install.log 2>&1
+
+cat << EOF >
+127.0.0.1   undercloud.atto.org undercloud localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         undercloud.atto.org undercloud localhost localhost.localdomain localhost6 localhost6.localdomain6
+EOF
+
 
 %end
