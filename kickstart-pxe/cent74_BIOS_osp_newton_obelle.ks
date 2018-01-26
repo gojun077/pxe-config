@@ -1,8 +1,9 @@
 #version=RHEL7
 # Last Updated: 2017.12.11
 # Kickstart for installing CentOS 7.4 on a BIOS firmware machine
-# that will be used as nodes for Openstack Newton. This file
-# installs EPEL and CentOS Openstack Newton repos
+# that will be used as nodes for Openstack Newton and connected to
+# Atto OBelle SDN. This file installs EPEL and CentOS Openstack
+# Newton repos
 #
 # This kickstart file assumes use of CentOS 7.4 1708 DVD iso
 
@@ -63,6 +64,7 @@ kexec-tools
 libselinux-python
 ncdu
 parted
+python-pip
 screen
 sed
 tree
@@ -82,6 +84,7 @@ yum update -y
 yum install -y http://mirror.centos.org/centos/7/cloud/x86_64/openstack-newton/centos-release-openstack-newton-1-1.el7.noarch.rpm 1>>/root/post_install.log 2>&1
 # Install packstack and osp utils
 yum install -y openstack-packstack openstack-packstack-doc openstack-utils python-openstackclient 1>>/root/post_install.log 2>&1
+
 
 # Import GPG keys for add'l repos
 #rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7

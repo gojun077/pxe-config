@@ -209,7 +209,7 @@ d-i clock-setup/ntp boolean true
 # and not e.g. /dev/discs/disc0/disc).
 # For example, to use the first SCSI/SATA hard disk:
 
-#d-i partman-auto/method string regular
+d-i partman-auto/method string regular
 #d-i partman-auto/disk string /dev/sda
 
 # In addition, you'll need to specify the method to use.
@@ -218,7 +218,7 @@ d-i clock-setup/ntp boolean true
 # - lvm:     use LVM to partition the disk
 # - crypto:  use LVM within an encrypted partition
 
-d-i partman-auto/method string lvm
+#d-i partman-auto/method string lvm
 
 # If one of the disks that are going to be automatically partitioned
 # contains an old LVM configuration, the user will normally receive a
@@ -227,7 +227,7 @@ d-i partman-auto/method string lvm
 d-i partman-lvm/device_remove_lvm boolean true
 
 # The same applies to pre-existing software RAID array:
-#d-i partman-md/device_remove_md boolean true
+d-i partman-md/device_remove_md boolean true
 # And the same goes for the confirmation to write the lvm partitions.
 
 d-i partman-lvm/confirm boolean true
@@ -250,6 +250,38 @@ d-i partman/default_filesystem string ext4
 # If you have a way to get a recipe file into the d-i environment, you can
 # just point at it.
 #d-i partman-auto/expert_recipe_file string /hd-media/recipe
+
+# Custom Partition Layout
+#    - root partition: at least 8 GB in size, no max size
+#    - boot partition: at least 512 MB in size, max 512 MB
+#    - swap partition: at least 2 GB in size, max 4 GB
+# Meaning of values in partition 3-tuples:
+#    - min size
+#    - priority (percentage = priority - min)
+#    - max size
+# For a good explanation of D-I partition priority, see the link below:
+# https://www.bishnet.net/tim/blog/2015/01/29/understanding-partman-autoexpert_recipe/
+
+d-i partman-auto/expert_recipe string                         \
+    boot-root ::                                              \
+        512 522 512 ext4                                      \
+            $primary{ } $bootable{ }                          \
+            method{ format } format{ }                        \
+            use_filesystem{ } filesystem{ ext4 }              \
+            mountpoint{ /boot }                               \
+        . \
+        8192 8272 -1 ext4                                     \
+            $primary{ }                                       \
+            method{ format } format{ }                        \
+            use_filesystem{ } filesystem{ ext4 }              \
+            mountpoint{ / }                                   \
+        . \
+        2048 2058 4096 linux-swap                             \
+            $primary{ }                                       \
+            method{ swap } format{ }                          \
+        .
+
+
 
 # If not, you can put an entire recipe into the preconfiguration file in one
 # (logical) line. This example creates a small /boot partition, suitable
@@ -405,9 +437,15 @@ tasksel tasksel/first multiselect ubuntu-server
 
 # Individual additional packages to install
 
-d-i pkgsel/include string openssh-server build-essential screen
-d-i pkgsel/include string python2.7 vim manpages man-db
-d-i pkgsel/include string git ufw emacs terminator
+d-i pkgsel/include string openssh-server \
+build-essential \
+screen \
+python2.7 \
+vim \
+manpages \
+man-db
+git \
+ufw \
 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
