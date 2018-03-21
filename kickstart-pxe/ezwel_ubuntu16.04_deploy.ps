@@ -308,12 +308,6 @@ d-i partman-auto/expert_recipe string                         \
             method{ efi }                                     \
             format{ }                                         \
         . \
-        256 266 256 ext4                                      \
-            $defaultignore{ }                                 \
-            method{ format } format{ }                        \
-            use_filesystem{ } filesystem{ ext4 }              \
-            mountpoint{ /boot }                               \
-        . \
         8192 8272 -1 ext4                                     \
             $primary{ }                                       \
             method{ format } format{ }                        \
