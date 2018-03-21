@@ -4,8 +4,6 @@
 #
 
 # D-I preseed file for unattended install of Ubuntu Xenial Xerus 16.04
-# This .ps file will be slipstreamed into a custom Server iso image
-# to enable automated installation via DVD/USB
 
 # Locale settings
 d-i debian-installer/locale string en_US.UTF-8
@@ -188,7 +186,8 @@ d-i clock-setup/utc boolean true
 d-i time/zone string Asia/Seoul
 
 # Controls whether to use NTP to set the clock during the install
-# Hana DC does not offer Internet connection; setup NTP later
+# ezwel does not offer Internet connection; setup local NTP server
+# later
 d-i clock-setup/ntp boolean false
 
 # NTP server to use. The default is almost always fine here.
@@ -321,7 +320,7 @@ d-i partman-auto/expert_recipe string                         \
             use_filesystem{ } filesystem{ ext4 }              \
             mountpoint{ / }                                   \
         . \
-        2048 2058 2048 linux-swap                             \
+        8192 8272 8192 linux-swap                             \
             $primary{ }                                       \
             method{ swap } format{ }                          \
         .
