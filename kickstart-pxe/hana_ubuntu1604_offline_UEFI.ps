@@ -300,11 +300,14 @@ d-i partman-auto/choose_recipe select boot-root
 
 d-i partman-auto/expert_recipe string                         \
     boot-root ::                                              \
-        512 522 512 free \
-            $iflabel{ gpt } \
-            $reusemethod{ } \
-            method{ efi } \
-            format{ } \
+        1 1 1 free                                            \
+           $bios_boot{ }                                      \
+           method{ biosgrub }                                 \
+        . \
+        512 522 512 fat32                                     \
+           $primary{ } $lvmignore{ }                          \
+            method{ efi }                                     \
+            format{ }                                         \
         . \
         256 266 256 ext4                                      \
             $defaultignore{ }                                 \
