@@ -4,8 +4,20 @@ PROMPT 0
 TIMEOUT 100
 
 MENU TITLE PXE Boot Menu for Legacy BIOS
-ONTIMEOUT CentOS_7.4_OSP_Newton
+ONTIMEOUT ezwel_ubuntu16.04_ctrl_BIOS
 
+
+LABEL ezwel_ubuntu16.04_ctrl_BIOS
+  MENU LABEL ezwel BIOS PXE test with D-I auto install
+  KERNEL images/xenialDVD/linux
+  INITRD images/xenialDVD/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ezwel_ubuntu16.04_deploy_BIOS.ps
+
+LABEL ezwel_ubuntu16.04_ctrl_UEFI
+  MENU LABEL ezwel UEFI PXE with D-I auto install
+  KERNEL images/xenialDVD/linux
+  INITRD images/xenialDVD/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ezwel_ubuntu16.04_deploy_UEFI.ps
 
 LABEL RHEL72_Athene3_dpdk
   MENU LABEL Boot RHEL 7.2 DVD Kickstart for Athene 3.0 node
@@ -50,9 +62,9 @@ LABEL Ubuntu_Server 17.04
 
 LABEL Ubuntu_Server 16.04
   MENU LABEL Boot Ubuntu Server 1604 with D-I auto install
-  KERNEL images/ubuntu1604/linux
-  INITRD images/ubuntu1604/initrd.gz
-  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/ubuntu1604.ps
+  KERNEL images/xenialDVD/linux
+  INITRD images/xenialDVD/initrd.gz
+  APPEND ip=dhcp auto=true priority=critical preseed/url=http://10.10.10.97:8000/hana_ubuntu16.04_offline.ps
 
 LABEL RHEL73_RHO_10_Undercloud
   MENU LABEL Boot RHEL 7.3 DVD Kickstart for RHO Newton undercloud
