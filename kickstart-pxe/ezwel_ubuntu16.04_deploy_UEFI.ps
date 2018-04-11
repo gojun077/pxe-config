@@ -116,8 +116,8 @@ d-i hw-detect/load_firmware boolean true
 #d-i mirror/protocol string ftp
 #d-i mirror/country string manual
 #d-i mirror/http/hostname string archive.ubuntu.com
-d-i mirror/http/hostname string 10.10.10.97:11112  # for local mirror
-d-i mirror/http/directory string /ubuntu
+#d-i mirror/http/hostname string 10.10.10.97:11112  # for local mirror
+#d-i mirror/http/directory string /ubuntu
 #d-i mirror/http/proxy string
 
 # Alternatively: by default, the installer uses CC.archive.ubuntu.com where
@@ -145,7 +145,7 @@ d-i passwd/root-login boolean true
 #d-i passwd/root-password-again password r00tme
 # or encrypted using a crypt(3)  hash.
 #d-i passwd/root-password-crypted password [crypt(3) hash]
-d-i passwd/root-password-crypted password $6$N52J3aF.lVhii5W3$5sXiXrYvphFe2VHkwxLeUoZ/kO3GDMILUZPKbclzDcWU9MMdEog38cRpOkZ4pD3WEanY2abqHGn3bxgYnnurv0
+d-i passwd/root-password-crypted password $6$1SuDUw5I/JbBs6wu$r40t19wj2TSQnzJV9A4DOUm38drPXPrH7q.XsDL3kqN3wELnRzR3lRE7cF.RIfxkYSXWtsVZqxETO20rvsb3y0
 
 # To create a normal user account.
 d-i passwd/user-fullname string Ubuntu User
@@ -445,6 +445,30 @@ d-i apt-setup/local2/comment string xenial universe
 d-i apt-setup/local3/repository string \
        http://10.10.10.97:11112/ubuntu xenial-updates universe
 d-i apt-setup/local3/comment string xenial-updates universe
+
+d-i apt-setup/local4/repository string \
+       http://10.10.10.97:11112/ubuntu xenial multiverse
+d-i apt-setup/local4/comment string xenial multiverse
+
+d-i apt-setup/local5/repository string \
+       http://10.10.10.97:11112/ubuntu xenial-updates multiverse
+d-i apt-setup/local5/comment string xenial-updates multiverse
+
+d-i apt-setup/local6/repository string \
+       http://10.10.10.97:11112/ubuntu xenial-backports main restricted universe multiverse
+d-i apt-setup/local6/comment string xenial-backports main restricted universe multiverse
+
+d-i apt-setup/local7/repository string \
+       http://10.10.10.97:11112/ubuntu xenial-security main restricted
+d-i apt-setup/local7/comment string xenial-security main restricted
+
+d-i apt-setup/local8/repository string \
+       http://10.10.10.97:11112/ubuntu xenial-security universe
+d-i apt-setup/local8/comment string xenial-security universe
+
+d-i apt-setup/local9/repository string \
+       http://10.10.10.97:11112/ubuntu xenial-security multiverse
+d-i apt-setup/local9/comment string xenial-security multiverse
 
 
 # Enable deb-src lines
