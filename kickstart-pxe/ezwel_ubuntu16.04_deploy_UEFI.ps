@@ -116,14 +116,14 @@ d-i hw-detect/load_firmware boolean true
 #d-i mirror/protocol string ftp
 #d-i mirror/country string manual
 #d-i mirror/http/hostname string archive.ubuntu.com
-#d-i mirror/http/hostname string 10.10.10.97:8080  # for local mirror
-#d-i mirror/http/directory string /ubuntu
+d-i mirror/http/hostname string 10.10.10.97:11112  # for local mirror
+d-i mirror/http/directory string /ubuntu
 #d-i mirror/http/proxy string
 
 # Alternatively: by default, the installer uses CC.archive.ubuntu.com where
 # CC is the ISO-3166-2 code for the selected country. You can preseed this
 # so that it does so without asking.
-d-i mirror/http/mirror select kr.archive.ubuntu.com
+#d-i mirror/http/mirror select kr.archive.ubuntu.com
 
 # Suite to install.
 #d-i mirror/suite string xenial
