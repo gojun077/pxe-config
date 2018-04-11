@@ -136,7 +136,7 @@ d-i mirror/http/mirror select kr.archive.ubuntu.com
 # Skip creation of a root account (normal user account will be able to
 # use sudo). The default is false; preseed this to true if you want to set
 # a root password.
-#d-i passwd/root-login boolean false
+d-i passwd/root-login boolean true
 # Alternatively, to skip creation of a normal user account.
 #d-i passwd/make-user boolean false
 
